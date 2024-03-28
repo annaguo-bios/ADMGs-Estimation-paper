@@ -57,19 +57,19 @@ attach(data, warn.conflicts=FALSE)
 
 
 # run TMLE
-output <- ADMGtmle(a=a,data=data, vertices=vertices,
-                           bi_edges=bi_edges,
-                           di_edges=di_edges,
+output <- ADMGtmle(a=eval(parse(text=a)),data=data, vertices=eval(parse(text = vertices)),
+                           bi_edges=eval(parse(text = bi_edges)),
+                           di_edges=eval(parse(text = di_edges)),
                            treatment=treatment, outcome=outcome,
-                           multivariate.variables = multi.variables,
-                   density.ratio.method.L=ratio.method.L,
-                   density.ratio.method.M=ratio.method.M)
+                           multivariate.variables = eval(parse(text = multivariate.variables)),
+                   ratio.method.L=ratio.method.L,
+                   ratio.method.M=ratio.method.M)
 
 print("Estimation done")
 
 
 # estimate E[Y(1)], E[Y(0)], and ATE
-hat_ATE = output$TMLE$hat_ATE
+hat_ATE = output$TMLE$ATE
 
 # lower CI
 lower.ci_ATE = output$TMLE$lower.ci
@@ -78,7 +78,7 @@ lower.ci_ATE = output$TMLE$lower.ci
 # lower.ci_ATE = hat_ATE - 1.96*sqrt(mean((tmle_output_Y1$EIF-tmle_output_Y0$EIF)^2-(tmle_output_Y1$EIF-tmle_output_Y0$EIF))/n)
 
 # upper CI
-upper.ci_Y1 = output$TMLE$upper.ci_Y1
+upper.ci_ATE = output$TMLE$upper.ci
 # lower.ci_Y1 = hat_E.Y1+1.96*sqrt(mean(tmle_output_Y1$EIF^2-tmle_output_Y1$EIF)/n)
 # lower.ci_Y0 = hat_E.Y0+1.96*sqrt(mean(tmle_output_Y0$EIF^2-tmle_output_Y0$EIF)/n)
 # upper.ci_ATE = hat_ATE + 1.96*sqrt(mean((tmle_output_Y1$EIF-tmle_output_Y0$EIF)^2-(tmle_output_Y1$EIF-tmle_output_Y0$EIF))/n)
@@ -90,16 +90,16 @@ save(list = c("bias_ATE","hat_ATE","lower.ci_ATE","upper.ci_ATE"),file = paste0(
 
 
 # estimate E[Y(1)], E[Y(0)], and ATE
-hat_ATE = output$Onestep$hat_ATE
+hat_ATE = output$Onestep$ATE
 
 # lower CI
-lower.ci_ATE = output$Onestep$lower.ci_ATE
+lower.ci_ATE = output$Onestep$lower.ci
 # lower.ci_Y1 = hat_E.Y1-1.96*sqrt(mean(tmle_output_Y1$EIF^2-tmle_output_Y1$EIF)/n)
 # lower.ci_Y0 = hat_E.Y0-1.96*sqrt(mean(tmle_output_Y0$EIF^2-tmle_output_Y0$EIF)/n)
 # lower.ci_ATE = hat_ATE - 1.96*sqrt(mean((tmle_output_Y1$EIF-tmle_output_Y0$EIF)^2-(tmle_output_Y1$EIF-tmle_output_Y0$EIF))/n)
 
 # upper CI
-upper.ci_ATE = output$Onestep$upper.ci_ATE
+upper.ci_ATE = output$Onestep$upper.ci
 # lower.ci_Y1 = hat_E.Y1+1.96*sqrt(mean(tmle_output_Y1$EIF^2-tmle_output_Y1$EIF)/n)
 # lower.ci_Y0 = hat_E.Y0+1.96*sqrt(mean(tmle_output_Y0$EIF^2-tmle_output_Y0$EIF)/n)
 # upper.ci_ATE = hat_ATE + 1.96*sqrt(mean((tmle_output_Y1$EIF-tmle_output_Y0$EIF)^2-(tmle_output_Y1$EIF-tmle_output_Y0$EIF))/n)

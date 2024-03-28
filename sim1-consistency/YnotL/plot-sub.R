@@ -17,7 +17,7 @@ plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL){
     geom_line(linewidth=0.7)+
     geom_hline(yintercept=0, linetype="dashed",color="blue",linewidth=0.8)+
     coord_cartesian(ylim=ycoord.bias)+
-    ylim(-5, 6)+
+    # ylim(-5, 6)+
     theme_bw()+
     theme(axis.line = element_line(colour = "black"),
           panel.grid.major = element_blank(),
