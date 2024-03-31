@@ -21,7 +21,7 @@ generate_data <- function(n,parA = c(1,1), parU1=c(1,1,1,0),parU2=c(1,1,1,1,1), 
   data <- data.frame(X=X, U1=U1, U2=U2, A=A, M=M, L=L, Y=Y)
 
   # propensity score
-  ps <- A*(parA[1] + parA[2]*X)+(1-A)*(1-(parA[1] + parA[2]*X))
+  ps <- A*(plogis(parA[1] + parA[2]*X))+(1-A)*(1-(plogis(parA[1] + parA[2]*X)))
 
   return(list(data = data,
               parA=parA,

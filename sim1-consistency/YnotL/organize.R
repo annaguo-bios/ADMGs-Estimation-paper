@@ -88,7 +88,7 @@ for (i in seq_along(n.vec)){
     load(paste0(method,out.path,"output_",n,"_",t,".Rdata"))
 
     # record bias
-    bias_matrix_ate[t,i] <- bias_ATE
+    bias_matrix_ate[t,i] <- hat_ATE - ATE
 
     # record point estimate
     est_matrix_ate[t,i] <- hat_ATE

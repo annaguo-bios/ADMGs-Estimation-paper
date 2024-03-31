@@ -1,9 +1,16 @@
 */.Rhistory
 */*/.Rhistory
 .DS_Store
+.Rproj.user
 .Rproj.user*
 */*/joblist*
 */*/plot.pdf
 .Rhistory
-*/.Rhistory
+*/*/.Rhistory
 */*/*/result.Rdata
+Casks
+Searching
+*/Casks
+*/Searching
+*/*/Casks
+*/*/Searching

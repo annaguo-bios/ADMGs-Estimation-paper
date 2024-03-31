@@ -1,5 +1,5 @@
-sim1-consistency/DGPs/Y${input}L-truth.Rdata: sim1-consistency/DGPs/compute_truth.R sim1-consistency/DGPs/Y${input}L-truth.R sim1-consistency/DGPs/Y${input}L-dgp.R
-	Rscript sim1-consistency/DGPs/compute_truth.R sim1-consistency/DGPs/Y${input}L-truth.R sim1-consistency/DGPs/Y${input}L-dgp.R sim1-consistency/DGPs/Y${input}L-truth.Rdata 10000
+sim${sim}/DGPs/Y${input}L-truth.Rdata: sim${sim}/DGPs/compute_truth.R sim${sim}/DGPs/Y${input}L-truth.R sim${sim}/DGPs/Y${input}L-dgp.R
+	Rscript sim${sim}/DGPs/compute_truth.R sim${sim}/DGPs/Y${input}L-truth.R sim${sim}/DGPs/Y${input}L-dgp.R sim${sim}/DGPs/Y${input}L-truth.Rdata 500000
 
 	
 .PHONY:clean

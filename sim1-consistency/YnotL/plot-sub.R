@@ -1,5 +1,5 @@
 
-plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL){
+plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL, ylim.bias=NULL, ylim.var=NULL){
 
   bias = avg.bias_ate[avg.bias_ate$n %in% n.vec,]
   var = avg.variance_ate[avg.variance_ate$n %in% n.vec,]
@@ -17,7 +17,6 @@ plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL){
     geom_line(linewidth=0.7)+
     geom_hline(yintercept=0, linetype="dashed",color="blue",linewidth=0.8)+
     coord_cartesian(ylim=ycoord.bias)+
-    # ylim(-5, 6)+
     theme_bw()+
     theme(axis.line = element_line(colour = "black"),
           panel.grid.major = element_blank(),
@@ -31,6 +30,12 @@ plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL){
                   position=position_dodge(0.05))+
     geom_point(size=3,color="red")+
     labs(title="",x="", y = yaxis_bias)
+  
+  if (!is.null(ylim.bias)){
+    
+    p.bias <- p.bias + ylim(ylim.bias[1], ylim.bias[2])
+    
+  }
 
   ######################
   # variance plot
@@ -53,6 +58,10 @@ plot.tmle <- function(plot_title,ycoord.bias=NULL,ycoord.var=NULL){
                   position=position_dodge(0.05),linewidth=0.5)+
     geom_point(size=3,color="red")+
     labs(title="",x="Sample size n", y = yaxis_var)
+  
+  if (!is.null(ylim.var)){
+   p.variance <- p.variance + ylim(ylim.var[1], ylim.var[2]) 
+  }
 
   ######################
   # arrangement

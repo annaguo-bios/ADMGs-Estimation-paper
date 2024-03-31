@@ -1,0 +1,6 @@
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata TMLE-bayes/
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata Onestep-bayes/
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata TMLE-dnorm/
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata Onestep-dnorm/
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata TMLE-densratio/
+Rscript organize.R output/ result.Rdata 3 1000 ../DGPs/YinL-truth.Rdata Onestep-densratio/
