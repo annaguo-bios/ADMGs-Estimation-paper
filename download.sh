@@ -42,15 +42,6 @@
 # scp aguo28@clogin01.sph.emory.edu:"/projects/rnabi/annaguo/ADMGtmle/sim${simnumber}/Y${in}L/${e_method}-${d_method}/result.Rdata" "/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim${simnumber}/Y${in}L/${e_method}-${d_method}/result.Rdata"
 ssh_options="-o StrictHostKeyChecking=no"
 
-echo "TMLE or Onestep. 1:TMLE, 2: Onestep"
-read e_method_input
-
-case $e_method_input in
-    1) e_method="TMLE" ;;
-    2) e_method="Onestep" ;;
-    *) echo "Invalid input for e_method"; exit 1 ;;
-esac
-
 echo "What is the simulation number. 1: 1-consistency, 2: 2-weak-overlap, 3:3-misspecification, 4-crossfitting"
 read simnumber_input
 
@@ -62,7 +53,7 @@ case $simnumber_input in
        read model_input
        case $model_input in
            1) model="CF" ;;
-           2) model="linear" ;;
+           2) model="Linear" ;;
            3) model="SL" ;;
            *) echo "Invalid input for model"; exit 1 ;;
        esac
@@ -93,6 +84,15 @@ case $in_input in
     1) in="in" ;;
     2) in="not" ;;
     *) echo "Invalid input for in"; exit 1 ;;
+esac
+
+echo "TMLE or Onestep. 1:TMLE, 2: Onestep"
+read e_method_input
+
+case $e_method_input in
+    1) e_method="TMLE" ;;
+    2) e_method="Onestep" ;;
+    *) echo "Invalid input for e_method"; exit 1 ;;
 esac
 
 echo "What is the density ratio estimation method. 1: bayes, 2: dnorm, 3: densratio."

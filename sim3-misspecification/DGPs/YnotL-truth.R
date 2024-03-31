@@ -15,13 +15,13 @@ density.m.ax <- function(parM,m,a,x, sd.M){
 
 # true p(L|M,A,X)
 density.l.max <- function(parL, parU1, l, m, a, x, sd.L, sd.U1) {
-  dnorm(l, mean = parL[1] + parL[2]*m[1] + parL[3]*m[2] + parL[4]*x + parL[5]*{parU1[1] + parU1[2]*a + parU1[3]*x + parU1[4]*a*x}, sqrt(sd.L^2+sd.U1^2))
+  dnorm(l, mean = parL[1] + parL[2]*m[1] + parL[3]*m[2] + parL[4]*x + parL[5]*{parU1[1] + parU1[2]*a + parU1[3]*x + parU1[4]*a*x} + parL[6]*m[1]*x + parL[7]*m[2]*x, sqrt(sd.L^2+sd.U1^2))
 }
 
 
 # E(Y|L,M,A,X)
 E.y.lmax <- function(parY,parU2,l,m,a,x){ # takes m as a dataframe or matrix
-  parY[1] + parY[2]*l  + parY[3]*a + parY[4]*x + parY[5]*{parU2[1] + parU2[2]*m[,1] + parU2[3]*m[,2] + parU2[4]*a + parU2[5]*x + parU2[6]*a*x}
+  parY[1] + parY[2]*l  + parY[3]*a + parY[4]*x + parY[5]*{parU2[1] + parU2[2]*m[,1] + parU2[3]*m[,2] + parU2[4]*a + parU2[5]*x + parU2[6]*a*x}+parY[6]*l*x + parY[7]*x*x
 }
 
 
@@ -49,18 +49,27 @@ compute_psi_and_var <- function(a, parA, parU1, parU2, parM, parL, parY, sd.L, s
   muY.a0 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a0, x = X)
   
   # int E(Y|L,M,A,X)p(L|M,A,X) dL
-  mu.L.a1 <- parY[1] + parY[2]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}}  + # replace L with L|M,a1,X
-    parY[3]*a0 + parY[4]*X + parY[5]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X + parU2[6]*a0*X}
+  mu.L.a1 <- parY[1] + parY[2]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}+parL[6]*M[,1]*X + parL[7]*M[,2]*X}  + # replace L with L|M,a1,X
+    parY[3]*a0 + parY[4]*X + parY[5]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X + parU2[6]*a0*X}+
+    parY[6]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}+parL[6]*M[,1]*X + parL[7]*M[,2]*X}*X + parY[7]*X*X # replace L with L|M,a1,X
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X) dL dM
   mu.M.a0 <- parY[1] + parY[2]*{parL[1] + 
       parL[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X} + # replace M1 with M1|a0,X 
       parL[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X} + # replace M2 with M2|a0,X
-      parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}}  + # replace L with L|M,a1,X
+      parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}+ # replace L with L|M,a1,X
+      parL[6]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X}*X + # replace M1 with M1|a0,X 
+      parL[7]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X}*X}  + # replace M2 with M2|a0,X
     parY[3]*a0 + parY[4]*X + parY[5]*{parU2[1] + 
         parU2[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X} + # replace M1 with M1|a0,X
         parU2[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X} + # replace M2 with M2|a0,X
-        parU2[4]*a0 + parU2[5]*X + parU2[6]*a0*X}
+        parU2[4]*a0 + parU2[5]*X + parU2[6]*a0*X}+
+    parY[6]*{parL[1] + parL[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X} + # replace M1 with M1|a0,X
+        parL[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X} + # replace M2 with M2|a0,X
+        parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}+
+        parL[6]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X}*X + # replace M1 with M1|a0,X
+        parL[7]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X}*X}*X + # replace M2 with M2|a0,X
+    parY[7]*X*X # replace L with L|M,a1,X
   
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X)p(A|X) dL dM dA

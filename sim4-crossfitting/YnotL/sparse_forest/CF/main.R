@@ -19,12 +19,13 @@ lib.L = args[17] # superlearner lib for L via bayes
 lib.M = args[18] # superlearner lib for M via bayes
 lib.Y = args[19] # superlearner lib for Y
 lib.A = args[20] # superlearner lib for A
-superlearner.seq = args[21] # whether to use superlearner for sequential regression
-superlearner.L = args[22] # whether to use superlearner for L
-superlearner.M = args[23] # whether to use superlearner for M
-superlearner.Y = args[24] # whether to use superlearner for Y
-superlearner.A = args[25] # whether to use superlearner for A
-crossfit = args[26] # number of folds for crossfit
+superlearner.seq = as.logical(args[21]) # whether to use superlearner for sequential regression
+superlearner.L = as.logical(args[22]) # whether to use superlearner for L
+superlearner.M = as.logical(args[23]) # whether to use superlearner for M
+superlearner.Y = as.logical(args[24]) # whether to use superlearner for Y
+superlearner.A = as.logical(args[25]) # whether to use superlearner for A
+crossfit = as.logical(args[26]) # number of folds for crossfit
+
 
 
 # by default the density ratio method is bayes
