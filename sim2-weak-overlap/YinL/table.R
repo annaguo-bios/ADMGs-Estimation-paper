@@ -1,3 +1,4 @@
+setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim2-weak-overlap/YinL")
 library(outliers) #containing function outlier
 library(dplyr)
 
@@ -131,9 +132,9 @@ table1 <- as_hux(dat) %>%
   set_right_border(2:nrow(.), 5, brdr(0.4,"dotted")) %>%
   set_escape_contents(nrow(.), 1:ncol(.), FALSE) %>%
   set_top_border(row=1,col=everywhere,brdr(1, "solid")) %>% set_bottom_border(row = nrow(.),col = everywhere,brdr(1, "solid")) %>%
-  set_escape_contents(nrow(.), 1:ncol(.), FALSE) %>% set_caption("Comparison between TMLE estimators and one-step EIF estimator under positivity assumption violation when the outcome is not in the district of the treatment.") %>%
+  set_escape_contents(nrow(.), 1:ncol(.), FALSE) %>% set_caption("Comparison between TMLE estimators and one-step EIF estimator under positivity assumption violation when the outcome is in the district of the treatment.") %>%
   set_all_padding(1) %>% set_font_size(8) 
 
 table1
-quick_latex(table1)
+quick_latex(table1, file = "table-in.tex")
 y

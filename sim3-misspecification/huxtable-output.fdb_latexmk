@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1711917120 "/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim3-misspecification/huxtable-output.tex" "huxtable-output.pdf" "huxtable-output" 1711917120 0
-  "/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim3-misspecification/huxtable-output.tex" 1711917111 66406 d7e7442142f8205ffccf3bd512ae56da ""
+["pdflatex"] 1711975707 "/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim3-misspecification/huxtable-output.tex" "huxtable-output.pdf" "huxtable-output" 1711975708 0
+  "/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim3-misspecification/huxtable-output.tex" 1711975704 66392 c535f2ab81dc82610f41f9448e6aa2ab ""
   "/Users/apple/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/Users/apple/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm" 1136768653 1336 3125ccb448c1a09074e3aa4a9832f130 ""
   "/Users/apple/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
@@ -82,9 +82,9 @@
   "/Users/apple/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1697999793 92933 b8b9b5e3cbb5117964afb23687dd0831 ""
   "/Users/apple/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1699651100 6978474 bfda1f511a14d2f0e8aefd6c10667092 ""
   "/Users/apple/Library/TinyTeX/texmf.cnf" 1697824777 708 85fd07691b6294ba94c59dbc62380410 ""
-  "huxtable-output.aux" 1711917120 807 040ad352b700d6b9a35d7353389f4d7f "pdflatex"
-  "huxtable-output.out" 1711917120 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "huxtable-output.tex" 1711917111 66406 d7e7442142f8205ffccf3bd512ae56da ""
+  "huxtable-output.aux" 1711975707 807 040ad352b700d6b9a35d7353389f4d7f "pdflatex"
+  "huxtable-output.out" 1711975707 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "huxtable-output.tex" 1711975704 66392 c535f2ab81dc82610f41f9448e6aa2ab ""
   (generated)
   "huxtable-output.aux"
   "huxtable-output.log"

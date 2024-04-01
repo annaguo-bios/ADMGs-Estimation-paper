@@ -1,0 +1,523 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[normalem]{ulem}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{wrapfig}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+% These are LaTeX packages. You can install them using your LaTex management software,
+% or by running `huxtable::install_latex_dependencies()` from within R.
+% Other packages may be required if you use non-standard tabulars (e.g. tabulary).
+\pagenumbering{gobble}
+
+\begin{document}
+
+
+  \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
+  \providecommand{\huxvb}[2]{\color[RGB]{#1}\vrule width #2pt}
+  \providecommand{\huxtpad}[1]{\rule{0pt}{#1}}
+  \providecommand{\huxbpad}[1]{\rule[-#1]{0pt}{#1}}
+
+\begin{table}[ht]
+\begin{centerbox}
+\begin{threeparttable}
+\captionsetup{justification=centering,singlelinecheck=off}
+\caption{Comparative analysis of TMLEs and one-step estimators under model misspecifications when the outcome is in the district of the treatment.}
+ \setlength{\tabcolsep}{0pt}
+\begin{tabular}{l l l l l l l l l l l l l l l l l l l}
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{9}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont TMLEs}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{9}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont One-step estimators}} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{255, 255, 255}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi_{dnorm}(\hat{Q}^\star)\)}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi_{densratio}(\hat{Q}^\star)\)}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi_{bayes}(\hat{Q}^\star)\)}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi^{+}_{dnorm}(\hat{Q})\)}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi^{+}_{densratio}(\hat{Q})\)}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{3}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textit{{\fontsize{7pt}{8.4pt}\selectfont \(\psi^{+}_{bayes}(\hat{Q})\)}} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{255, 255, 255}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont } \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Linear} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SL} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CF} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{255, 255, 255}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}-}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont n=500}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Bias} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.630} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.348} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.366} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.474} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.271} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.276} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.561} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.273} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.327} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.630} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.340} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.378} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.590} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.329} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.364} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.063} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont -0.210} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.264} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SD} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.971} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.976} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.975} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.982} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.978} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.989} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.093} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.034} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.142} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.973} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.971} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.990} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.964} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.960} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.980} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 31.589} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 4.007} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 12.597} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont MSE} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.338} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.072} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.084} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.187} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.028} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.052} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.509} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.143} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.410} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.343} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.058} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.122} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.277} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.028} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.093} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 998.015} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 16.083} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 158.605} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI coverage} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.5\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 91.1\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 89.4\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.1\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 91.6\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 99\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 94.9\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 99\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 91.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 90.9\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 97\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 93.8\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 97.4\%} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI width} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.521} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.152} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.570} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.466} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.110} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.538} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 9.450} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 5.096} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 10.605} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.569} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.132} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.644} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.502} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.074} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 3.594} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 27.400} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 7.490} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 21.832} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont n=1000}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Bias} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.589} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.268} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.280} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.460} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.219} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.227} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.551} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.212} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.234} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.589} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.264} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.282} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.540} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.244} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.265} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.527} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.066} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.255} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SD} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.709} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.720} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.726} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.704} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.714} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.707} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.848} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.804} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.903} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.709} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.719} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.732} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.702} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.712} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.708} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 15.036} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.441} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 11.162} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont MSE} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.848} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.590} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.606} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.707} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.558} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.551} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.022} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.690} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.869} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.849} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.586} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.615} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.783} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.566} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.571} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 226.127} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 5.958} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 124.537} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI coverage} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 81.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.5\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 89.5\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 85\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.6\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 90.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 99.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 96.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 100\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 82.3\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.1\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 90\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 83.1\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 90.1\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 97.5\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 94.9\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 97.3\%} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI width} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.504} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.294} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.502} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.458} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.267} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.465} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 8.870} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 4.451} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 9.755} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.531} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.287} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.532} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.482} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.253} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.488} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 19.994} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 5.704} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 18.614} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont n=2000}} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} \textbf{{\fontsize{7pt}{8.4pt}\selectfont }} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont Bias} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.626} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.280} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.288} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.496} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.229} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.231} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.542} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.182} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.216} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.627} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.278} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.289} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.578} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.256} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.267} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.339} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont -0.113} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.066} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont SD} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.496} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.511} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.507} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.488} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.495} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.496} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.675} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.588} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.702} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.497} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.509} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.509} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.489} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.495} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.495} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 11.763} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 2.451} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 9.380} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont MSE} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.638} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.339} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.339} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.484} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.297} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.299} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.749} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.379} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.539} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.639} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.337} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.343} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.573} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.311} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 0.316} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 138.343} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 6.012} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.908} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI coverage} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 72.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 84.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.8\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 78.4\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.5\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 88\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 99.9\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 98.4\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 100\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 72.4\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 84.3\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 86.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 74.2\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 85.7\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 87.4\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 98\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 95.6\%} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 98.3\%} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}||>{\huxb{0, 0, 0}{0.4}}|>{\huxb{0, 0, 0}{0.4}}|}
+\arrayrulecolor{black}
+
+\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\raggedright \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont CI width} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.771} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.638} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.748} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.731} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.617} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.717} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 9.476} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 4.300} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 10.396} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.788} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.635} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.762} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.747} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.612} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0.4}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 1.726} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 19.031} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 5.600} \hspace{-1pt}\huxbpad{-1pt}} &
+\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{-1pt + 1em}\centering \hspace{-1pt} {\fontsize{7pt}{8.4pt}\selectfont 17.218} \hspace{-1pt}\huxbpad{-1pt}} \tabularnewline[-0.5pt]
+
+
+\hhline{>{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}->{\huxb{0, 0, 0}{1}}-}
+\arrayrulecolor{black}
+\end{tabular}
+\end{threeparttable}\par\end{centerbox}
+
+\end{table}
+
+
+
+\end{document}

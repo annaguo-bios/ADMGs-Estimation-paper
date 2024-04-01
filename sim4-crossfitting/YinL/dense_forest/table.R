@@ -1,3 +1,4 @@
+setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim4-crossfitting/YinL/dense_forest")
 # sample size
 n= c(500,1000,2000)
 n.vec <- c(500,1000,2000)
@@ -175,7 +176,7 @@ table1 <- as_hux(dat) %>%
   set_bold(c(4,10,16), everywhere) %>%
   set_italic(2,everywhere) %>%
   set_bottom_border(row = 1, col =2:ncol(.)) %>% 
-  set_bottom_border(row = 4, col =2:ncol(.)) %>% 
+  set_bottom_border(row = 3, col =2:ncol(.)) %>% 
   set_bottom_border(row = 2, col =2:ncol(.)) %>% 
   set_right_border(4:nrow(.), 3, brdr(0.6,"double")) %>%
   set_right_border(4:nrow(.), 5, brdr(0.4,"solid")) %>%
@@ -189,5 +190,5 @@ RF refers to random forest with 500 trees and a minimum node size of 5 for a con
 variable and 1 for binary, and CF denotes random forest with cross fitting using 5 folds.") %>% set_col_width(1/14*c(2,rep(1,12)))
 
 table1
-quick_latex(table1)
+quick_latex(table1, file="table-in-dense.tex")
 y

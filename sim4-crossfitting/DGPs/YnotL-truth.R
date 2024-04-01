@@ -2,9 +2,9 @@
 # L <- c("A","L")
 # C <- c("X")
 
-# true p(A|X)
-density.a.x <- function(parA, a, x) {
-  dbinom(a, 1, plogis(parA[1] + parA[2] * x))
+# true p(A|x) = sum_{u} p(A|u,x)p(u)
+density.a.x <- function(parA,a,x){
+  dbinom(a, 1, plogis(parA[1] + rowSums(sweep(x, 2, parA[2:11], "*")) +  rowSums(sweep(x^2,2,parA[12:21],"*")) ))
 }
 
 # true p(M|A,X)
@@ -28,6 +28,8 @@ E.y.lmax <- function(parY,parU2,l,m,a,x){ # takes m as a dataframe or matrix
 compute_psi_and_var <- function(a, parA, parU1, parU2, parM, parL, parY, sd.L, sd.M, sd.U1, n){
   
   M <- cbind(M.1, M.2)
+  X <- cbind(X.1, X.2, X.3, X.4, X.5, X.6, X.7, X.8, X.9, X.10)
+  
   
   a0 <- a
   a1 <- 1 - a
@@ -37,30 +39,30 @@ compute_psi_and_var <- function(a, parA, parU1, parU2, parM, parL, parY, sd.L, s
   p.a0.X <- density.a.x(parA, a = a0, X) # p(A=a0|X)
   
   # M|A,X
-  p.M.a1X <- sapply(1:n, function(i) {density.m.ax(parM, c(M.1[i], M.2[i]), a1, X[i], sd.M)}) # p(M|a,X)
-  p.M.a0X <- sapply(1:n, function(i) {density.m.ax(parM, c(M.1[i], M.2[i]), a0, X[i], sd.M)}) # p(M|A,X)
+  p.M.a1X <- sapply(1:n, function(i) {density.m.ax(parM, c(M.1[i], M.2[i]), a1, X[i,1], sd.M)}) # p(M|a,X)
+  p.M.a0X <- sapply(1:n, function(i) {density.m.ax(parM, c(M.1[i], M.2[i]), a0, X[i,1], sd.M)}) # p(M|A,X)
   
   # L|M,A,X
-  p.L.Ma1X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a1, X[i], sd.L, sd.U1)}) # p(L|a,X)
-  p.L.Ma0X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a0, X[i], sd.L, sd.U1)}) # p(L|A,X)
+  p.L.Ma1X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a1, X[i,1], sd.L, sd.U1)}) # p(L|a,X)
+  p.L.Ma0X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a0, X[i,1], sd.L, sd.U1)}) # p(L|A,X)
   
   # outcome regression E[Y|M,A,X]
-  muY.a1 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a1, x = X)
-  muY.a0 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a0, x = X)
+  muY.a1 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a1, x = X[,1])
+  muY.a0 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a0, x = X[,1])
   
   # int E(Y|L,M,A,X)p(L|M,A,X) dL
-  mu.L.a1 <- parY[1] + parY[2]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}}  + # replace L with L|M,a1,X
-    parY[3]*a0 + parY[4]*X + parY[5]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X}
+  mu.L.a1 <- parY[1] + parY[2]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + parL[4]*X[,1] + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
+    parY[3]*a0 + parY[4]*X[,1] + parY[5]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X[,1]}
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X) dL dM
   mu.M.a0 <- parY[1] + parY[2]*{parL[1] + 
-      parL[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X} + # replace M1 with M1|a0,X 
-      parL[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X} + # replace M2 with M2|a0,X
-      parL[4]*X + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X + parU1[4]*a1*X}}  + # replace L with L|M,a1,X
-      parY[3]*a0 + parY[4]*X + parY[5]*{parU2[1] + 
-      parU2[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X + parM[1,4]*a0*X} + # replace M1 with M1|a0,X
-      parU2[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X + parM[2,4]*a0*X} + # replace M2 with M2|a0,X
-      parU2[4]*a0 + parU2[5]*X}
+      parL[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X[,1] + parM[1,4]*a0*X[,1]} + # replace M1 with M1|a0,X 
+      parL[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X[,1] + parM[2,4]*a0*X[,1]} + # replace M2 with M2|a0,X
+      parL[4]*X[,1] + parL[5]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
+      parY[3]*a0 + parY[4]*X[,1] + parY[5]*{parU2[1] + 
+      parU2[2]*{parM[1,1] + parM[1,2]*a0 + parM[1,3]*X[,1] + parM[1,4]*a0*X[,1]} + # replace M1 with M1|a0,X
+      parU2[3]*{parM[2,1] + parM[2,2]*a0 + parM[2,3]*X[,1] + parM[2,4]*a0*X[,1]} + # replace M2 with M2|a0,X
+      parU2[4]*a0 + parU2[5]*X[,1]}
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X)p(A|X) dL dM dA
   mu.A.a1 <- p.a1.X * mu.M.a0

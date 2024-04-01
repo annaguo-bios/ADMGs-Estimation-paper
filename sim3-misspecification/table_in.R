@@ -1,3 +1,4 @@
+setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim3-misspecification")
 # sample size
 n= c(500,1000,2000)
 n.vec <- c(500,1000,2000)
@@ -268,7 +269,7 @@ table1 <- as_hux(dat) %>%
   set_bold(c(4,10,16), everywhere) %>%
   set_italic(2,everywhere) %>%
   set_bottom_border(row = 1, col =2:ncol(.)) %>% 
-  set_bottom_border(row = 4, col =2:ncol(.)) %>% 
+  set_bottom_border(row = 3, col =2:ncol(.)) %>% 
   set_bottom_border(row = 2, col =2:ncol(.)) %>% 
   set_right_border(4:nrow(.), 4, brdr(0.4,"solid")) %>%
   set_right_border(4:nrow(.), 7, brdr(0.4,"solid")) %>%
@@ -279,5 +280,5 @@ table1 <- as_hux(dat) %>%
   set_font_size(7) %>% set_escape_contents(2, 1:ncol(.), FALSE) %>% set_caption("Comparative analysis of TMLEs and one-step estimators under model misspecifications when the outcome is in the district of the treatment.") 
 
 table1
-quick_latex(table1)
+quick_latex(table1, file = "table-in.tex")
 y

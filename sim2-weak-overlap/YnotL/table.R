@@ -1,3 +1,5 @@
+setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim2-weak-overlap/YnotL")
+
 library(outliers) #containing function outlier
 library(dplyr)
 
@@ -136,6 +138,6 @@ table1 <- as_hux(dat) %>%
   set_all_padding(1) %>% set_font_size(8) 
 
 table1
-quick_latex(table1)
+quick_latex(table1, file="table-not.tex")
 y
 

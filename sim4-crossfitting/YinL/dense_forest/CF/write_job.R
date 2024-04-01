@@ -14,7 +14,7 @@ di_edges =  "'list(c(\"X\", \"A\"), c(\"X\", \"M\"), c(\"X\", \"L\"), c(\"X\", \
 bi_edges = "'list(c(\"A\", \"Y\"))'" # bidirected edges
 treatment = "A" # name of the treatment variable
 outcome = "Y" # name of the outcome variable
-multivariate.variables = "'list(M = c(\"M.1\", \"M.2\"))'"  # name of the multivariate variables
+multivariate.variables = "'list(M = c(\"M.1\", \"M.2\"), X=c(\"X.1\",\"X.2\",\"X.3\",\"X.4\",\"X.5\",\"X.6\",\"X.7\",\"X.8\",\"X.9\",\"X.10\"))'"  # name of the multivariate variables
 ratio.method.L="bayes" # method for estimating the density ratio associated with M
 ratio.method.M="bayes" # method for estimating the density ratio associated with L
 lib.seq = "\"c('SL.ranger')\"" # superlearner lib for sequential regression
