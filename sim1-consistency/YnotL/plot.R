@@ -23,20 +23,20 @@ load("../DGPs/YinL-truth.Rdata")
 
 ## bayes-tmle====
 load("TMLE-bayes/result.Rdata")
-p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)')
+p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)', ylim.var = c(190,300))
 
 ## bayes-onestep====
 load("Onestep-bayes/result.Rdata")
-p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)')
+p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)', ylim.var = c(190,300))
 
 
 ## dnorm-tmle====
 load("TMLE-dnorm/result.Rdata")
-p.dnorm.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - dnorm)')
+p.dnorm.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - dnorm)',ylim.bias=c(-2,1.5), ylim.var=c(180,260))
 
 ## dnorm-onestep====
 load("Onestep-dnorm/result.Rdata")
-p.dnorm.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - dnorm)')
+p.dnorm.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - dnorm)',ylim.bias=c(-2,1.5), ylim.var=c(180,260))
 
 ## densratio-tmle====
 load("TMLE-densratio/result.Rdata")

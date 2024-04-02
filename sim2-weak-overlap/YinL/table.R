@@ -85,8 +85,9 @@ continuous.onestep.densratio.ate <- cbind(colMeans(continuous.onestep.densratio_
 continuous.onestep.bayes.ate <- cbind(colMeans(continuous.onestep.bayes_bias_matrix_ate[,n.ind]),apply(continuous.onestep.bayes_bias_matrix_ate[,n.ind],2,sd),continuous.onestep.bayes_avg.MSE_ate[n.ind,2]/n,continuous.onestep.bayes_ci_coverage_ATE[n.ind,2],colMeans((continuous.onestep.bayes_ci_matrix_ate_upper-continuous.onestep.bayes_ci_matrix_ate_lower)[,n.ind]))
 
 
-positivity.dat <- list(continuous.dnorm.ate,continuous.onestep.dnorm.ate,continuous.densratio.ate,continuous.onestep.densratio.ate,continuous.bayes.ate,
-                       continuous.onestep.bayes.ate)
+
+positivity.dat <- list(continuous.onestep.dnorm.ate,continuous.dnorm.ate,continuous.onestep.densratio.ate,continuous.densratio.ate,
+                       continuous.onestep.bayes.ate,continuous.bayes.ate)
 
 for (i in seq_along(n)) {
   

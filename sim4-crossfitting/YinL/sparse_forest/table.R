@@ -1,4 +1,4 @@
-setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim4-crossfitting/YinL/dense_forest")
+setwd("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/sim4-crossfitting/YinL/sparse_forest")
 # sample size
 n= c(500,1000,2000)
 n.vec <- c(500,1000,2000)
@@ -186,8 +186,7 @@ table1 <- as_hux(dat) %>%
   set_top_border(row=1,col=everywhere,brdr(1, "solid")) %>% set_bottom_border(row = nrow(.),col = everywhere,brdr(1, "solid")) %>%
   set_font_size(6.5) %>% set_escape_contents(nrow(.), 1:ncol(.), FALSE) %>% 
   set_caption("Comparative analysis for the impact of cross-fitting on TMLEs and one-step estimators in conjunction with the use of random forests.
-RF refers to random forest with 500 trees and a minimum node size of 5 for a continuous
-variable and 1 for binary, and CF denotes random forest with cross fitting using 5 folds.") %>% set_col_width(1/14*c(2,rep(1,12)))
+RF refers to random forest with 200 trees and a minimum node size of 1, and CF denotes random forest with cross fitting using 5 folds.") %>% set_col_width(1/14*c(2,rep(1,12)))
 
 table1
 quick_latex(table1, file="table-in-dense.tex")

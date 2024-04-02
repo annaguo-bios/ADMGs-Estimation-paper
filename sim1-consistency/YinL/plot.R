@@ -23,11 +23,11 @@ load("../DGPs/YinL-truth.Rdata")
 
 ## bayes-tmle====
 load("TMLE-bayes/result.Rdata")
-p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)', ylim.bias=c(-3,6))
+p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)', ylim.bias=c(-5,6))
 
 ## bayes-onestep====
 load("Onestep-bayes/result.Rdata")
-p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)', ylim.bias=c(-3,6), ylim.var=c(0,10000))
+p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)', ylim.bias=c(-5,6), ylim.var=c(0,10000))
 
 
 ## dnorm-tmle====
@@ -40,11 +40,11 @@ p.dnorm.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - dnorm)')
 
 ## densratio-tmle====
 load("TMLE-densratio/result.Rdata")
-p.densratio.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - densratio)', ylim.bias=c(-2,1.5), ylim.var=c(175,240))
+p.densratio.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - densratio)', ylim.bias=c(-2,1.5), ylim.var=c(175,250))
 
 ## densratio-onestep====
 load("Onestep-densratio/result.Rdata")
-p.densratio.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - densratio)', ylim.bias=c(-2,1.5), ylim.var=c(175,240))
+p.densratio.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - densratio)', ylim.bias=c(-2,1.5), ylim.var=c(175,250))
 
 p.tmle <- plot_grid(
   p.bayes.tmle,p.dnorm.tmle,p.densratio.tmle,
