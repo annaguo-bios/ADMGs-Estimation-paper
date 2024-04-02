@@ -28,6 +28,7 @@ superlearner.M = "T" # whether to use superlearner for M
 superlearner.Y = "T" # whether to use superlearner for Y
 superlearner.A = "T" # whether to use superlearner for A
 crossfit = "T" # number of folds for crossfit
+zerodiv.avoid="0.01"
 
 for (i in seq_along(n.vec)){
   joblist <- c()
@@ -35,7 +36,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid)
     
     joblist <- c(joblist,job)
   }
@@ -54,7 +55,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("dnorm_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)
@@ -72,7 +73,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("densratio_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)

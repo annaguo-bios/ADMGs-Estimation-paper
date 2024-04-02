@@ -25,6 +25,7 @@ superlearner.M = as.logical(args[23]) # whether to use superlearner for M
 superlearner.Y = as.logical(args[24]) # whether to use superlearner for Y
 superlearner.A = as.logical(args[25]) # whether to use superlearner for A
 crossfit = as.logical(args[26]) # number of folds for crossfit
+zerodiv.avoid=as.numeric(args[27]) # sample size for the simulation
 
 
 # by default the density ratio method is bayes
@@ -85,7 +86,7 @@ output <- ADMGtmle(a=eval(parse(text=a)),data=data, vertices=eval(parse(text = v
                    superlearner.M=superlearner.M,
                    superlearner.Y=superlearner.Y,
                    superlearner.A=superlearner.A,
-                   crossfit=crossfit)
+                   crossfit=crossfit, zerodiv.avoid=zerodiv.avoid)
 
 print("Estimation done")
 
