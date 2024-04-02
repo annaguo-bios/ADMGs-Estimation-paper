@@ -1,0 +1,2 @@
+load("/Users/apple/Library/CloudStorage/Dropbox/primal-fixability/code/Simulations/debug.Rdata")
+ls()
