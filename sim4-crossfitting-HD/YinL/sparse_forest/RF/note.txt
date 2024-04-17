@@ -1,0 +1,1 @@
+forget to add zero individ in write_job on cluster

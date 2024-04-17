@@ -33,3 +33,4 @@ generate_data <- function(n,parA = c(1,1), parU=c(1,1,1,0), parM = matrix(c(1, 1
               sd.Y=sd.Y,
               ps=ps))
 }
+

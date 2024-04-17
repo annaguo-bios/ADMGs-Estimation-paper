@@ -17,13 +17,17 @@ outcome = "Y" # name of the outcome variable
 multivariate.variables = "'list(M = c(\"M.1\", \"M.2\"))'"  # name of the multivariate variables
 ratio.method.L="bayes" # method for estimating the density ratio associated with M
 ratio.method.M="bayes" # method for estimating the density ratio associated with L
+# superlearner.L = "T"
+# superlearner.M = "T"
+# lib.L = "\"c('SL.glm','SL.bayesglm', 'SL.gam','SL.earth','SL.ranger','SL.svm','SL.xgboost','SL.mean')\"" # superlearner lib for L via bayes
+# lib.M = "\"c('SL.glm','SL.bayesglm', 'SL.gam','SL.earth','SL.ranger','SL.svm','SL.xgboost','SL.mean')\"" # superlearner lib for M via bayes
 
 for (i in seq_along(n.vec)){
   joblist <- c()
   for (t in 1:nsim){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
-                  multivariate.variables," ",ratio.method.L," ",ratio.method.M)
+                  multivariate.variables," ",ratio.method.L," ",ratio.method.M) # , " ", superlearner.L, " ", superlearner.M," ",lib.L," ",lib.M
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("bayes_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)

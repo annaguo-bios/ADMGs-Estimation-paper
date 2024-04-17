@@ -7,6 +7,10 @@ library(stats)
 library(xtable)
 library(gridExtra)
 library(cowplot)
+library(here)
+
+print(here::here("sim1-consistency/YnotL"))
+setwd(here::here("sim1-consistency/YnotL"))
 
 # plot function
 source("plot-sub.R")
@@ -23,28 +27,28 @@ load("../DGPs/YinL-truth.Rdata")
 
 ## bayes-tmle====
 load("TMLE-bayes/result.Rdata")
-p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)', ylim.var = c(190,300))
+p.bayes.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - bayes)', ylim.var = c(170,245))
 
 ## bayes-onestep====
 load("Onestep-bayes/result.Rdata")
-p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)', ylim.var = c(190,300))
+p.bayes.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - bayes)', ylim.var = c(170,245))
 
 
 ## dnorm-tmle====
 load("TMLE-dnorm/result.Rdata")
-p.dnorm.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - dnorm)',ylim.bias=c(-2,1.5), ylim.var=c(180,260))
+p.dnorm.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - dnorm)')
 
 ## dnorm-onestep====
 load("Onestep-dnorm/result.Rdata")
-p.dnorm.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - dnorm)',ylim.bias=c(-2,1.5), ylim.var=c(180,260))
+p.dnorm.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - dnorm)')
 
 ## densratio-tmle====
 load("TMLE-densratio/result.Rdata")
-p.densratio.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - densratio)')
+p.densratio.tmle <- plot.tmle(r'($\psi(\hat{Q}^*)$ - densratio)',ylim.bias=c(-2,1.5), ylim.var=c(170,260))
 
 ## densratio-onestep====
 load("Onestep-densratio/result.Rdata")
-p.densratio.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - densratio)')
+p.densratio.one <- plot.tmle(r'($\psi^{+}(\hat{Q})$ - densratio)',ylim.bias=c(-2,1.5), ylim.var=c(170,260))
 
 p.tmle <- plot_grid(
   p.bayes.tmle,p.dnorm.tmle,p.densratio.tmle,

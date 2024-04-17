@@ -37,6 +37,87 @@ library(mvtnorm)
 library(ADMGtmle)
 library(utils)
 
+# superlearner.seq = F; # whether run superlearner for sequential regression
+# superlearner.Y=F; # whether run superlearner for outcome regression
+# superlearner.A=F; # whether run superlearner for propensity score
+# superlearner.M=F; # whether run superlearner for estimating densratio for M using bayes method
+# superlearner.L=F; # whether run superlearner for estimating densratio for L using bayes method
+# crossfit=F; K=5;
+# lib.seq = c("SL.glm","SL.earth","SL.ranger","SL.mean"); # superlearner library for sequential regression
+# lib.L = c("SL.glm","SL.earth","SL.ranger","SL.mean"); # superlearner library for density ratio estimation via bayes rule for variables in L
+# lib.M = c("SL.glm","SL.earth","SL.ranger","SL.mean"); # superlearner library for density ratio estimation via bayes rule for variables in M
+# lib.Y = c("SL.glm","SL.earth","SL.ranger","SL.mean"); # superlearner library for outcome regression
+# lib.A = c("SL.glm","SL.earth","SL.ranger","SL.mean"); # superlearner library for propensity score
+# formulaY="Y ~ ."; formulaA="A ~ ."; # regression formula for outcome regression and propensity score if superlearner is not used
+# linkY_binary="logit"; linkA="logit"; # link function for outcome regression and propensity score if superlearner is not used
+# n.iter=500; cvg.criteria=0.01;
+# truncate_lower=0; truncate_upper=1; zerodiv.avoid=0
+# 
+# dgp.f.name="YnotL-dgp.R"
+# truth="YnotL-truth.Rdata"
+# n = 4000
+# a = "c(1,0)"
+# vertices = 'c(\"A\", \"M\", \"L\", \"Y\", \"X\")' # vertices
+# di_edges =  'list(c(\"X\", \"A\"), c(\"X\", \"M\"), c(\"X\", \"L\"), c(\"X\", \"Y\"), c(\"A\", \"M\"), c(\"M\", \"L\"), c(\"L\", \"Y\"), c(\"A\", \"Y\"))' # directed edges
+# bi_edges = 'list(c(\"A\", \"L\"), c(\"M\", \"Y\"))' # bidirected edges
+# 
+# # vertices=eval(parse(text = vertices))
+# # bi_edges=eval(parse(text = bi_edges))
+# # di_edges=eval(parse(text = di_edges))
+# # multivariate.variables = eval(parse(text = multivariate.variables))
+# 
+# treatment = "A" # name of the treatment variable
+# outcome = "Y" # name of the outcome variable
+# multivariate.variables = 'list(M = c(\"M.1\", \"M.2\"))'  # name of the multivariate variables
+# ratio.method.L="densratio" # method for estimating the density ratio associated with M
+# ratio.method.M="densratio" # method for estimating the density ratio associated with L
+# 
+# (output$TMLE.Y1$EIF.Y - output$TMLE.Y0$EIF.Y)^2 %>% mean()
+# (output$Onestep.Y1$EIF.Y - output$Onestep.Y0$EIF.Y)^2 %>% mean()
+# 
+# (output$TMLE.Y1$EIF.A - output$TMLE.Y0$EIF.A)^2 %>% mean()
+# (output$Onestep.Y1$EIF.A - output$Onestep.Y0$EIF.A)^2 %>% mean()
+# 
+# (output$TMLE.Y1$EIF.v - output$TMLE.Y0$EIF.v)^2 %>% mean()
+# (output$Onestep.Y1$EIF.v - output$Onestep.Y0$EIF.v)^2 %>% mean()
+# 
+# 
+# 
+# a.tmle <- output$TMLE.Y1$EIF.A - output$TMLE.Y0$EIF.A
+# b.tmle <- (output$TMLE.Y1$EIF.v - output$TMLE.Y0$EIF.v)
+# c.tmle <- (output$TMLE.Y1$EIF.Y - output$TMLE.Y0$EIF.Y)
+# 
+# a.one <- output$Onestep.Y1$EIF.A - output$Onestep.Y0$EIF.A
+# b.one <- (output$Onestep.Y1$EIF.v - output$Onestep.Y0$EIF.v)
+# c.one <- (output$Onestep.Y1$EIF.Y - output$Onestep.Y0$EIF.Y)
+# 
+# a.tmle^2 %>% mean()
+# b.tmle^2 %>% mean()
+# c.tmle^2 %>% mean()
+# 
+# a.tmle %>% mean(); a.one %>% mean()
+# b.tmle %>% mean(); b.one %>% mean()
+# c.tmle %>% mean(); c.one %>% mean()
+# 
+# output$TMLE.Y1$estimated_psi; output$Onestep.Y1$estimated_psi
+# output$TMLE.Y0$estimated_psi; output$Onestep.Y0$estimated_psi
+# output$TMLE.Y1$estimated_psi-output$TMLE.Y0$estimated_psi; output$Onestep.Y1$estimated_psi-output$Onestep.Y0$estimated_psi
+# 
+# 
+# (2*a.tmle*b.tmle) %>% mean()
+# (2*a.tmle*c.tmle) %>% mean()
+# (2*b.tmle*c.tmle) %>% mean()
+# 
+# a.one^2 %>% mean()
+# b.one^2 %>% mean()
+# c.one^2 %>% mean()
+# 
+# (2*a.one*b.one) %>% mean()
+# (2*a.one*c.one) %>% mean()
+# (2*b.one*c.one) %>% mean()
+# 
+# output$TMLE$EIF^2 %>% mean()
+# output$Onestep$EIF^2 %>% mean()
 
 set.seed(seed)
 #################################################

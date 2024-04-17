@@ -4,7 +4,7 @@
 
 # true p(A|X)
 density.a.x <- function(parA, a, x) {
-  dbinom(a, 1, plogis(parA[1] + parA[2] * x))
+  dbinom(a, 1, (parA[1] + parA[2] * x))
 }
 
 # true p(M|A,X)

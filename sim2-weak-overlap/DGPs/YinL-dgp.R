@@ -1,11 +1,11 @@
 library(MASS)
 ## Simulation Figure4(a) ==
 
-generate_data <- function(n,parA = c(1,5), parU=c(1,1,1,0), parM = matrix(c(1, 1, 1, 0,-1,-0.5,2,0), nrow = 2,byrow = T), parL= c(1,1,1, 1, 1) ,parY = c(1, 1, 1, 1, 1, 1), sd.U=1, sd.M= matrix(c(2, 1, 1, 3), nrow = 2), sd.L=1, sd.Y=1){
+generate_data <- function(n,parA = c(0.001,0.998), parU=c(1,1,1,0), parM = matrix(c(1, 1, 1, 0,-1,-0.5,2,0), nrow = 2,byrow = T), parL= c(1,1,1, 1, 1) ,parY = c(1, 1, 1, 1, 1, 1), sd.U=1, sd.M= matrix(c(2, 1, 1, 3), nrow = 2), sd.L=1, sd.Y=1){
 
   X <- runif(n, 0, 1) # p(X)
 
-  A <- rbinom(n, 1, plogis(parA[1] + parA[2]*X)) # p(A|X)
+  A <- rbinom(n, 1, (parA[1] + parA[2]*X)) # p(A|X)
 
   U <- parU[1] + parU[2]*A + parU[3]*X + parU[4]*A*X + rnorm(n,0,sd.U) # p(U|A,X)
 

@@ -14,7 +14,9 @@ outcome = args[12] # name of the outcome variable
 multivariate.variables = args[13] # name of the multivariate variables
 ratio.method.L = args[14] # method for estimating the density ratio associated with M
 ratio.method.M = args[15] # method for estimating the density ratio associated with L
-
+linkA = args[16] # link function for the treatment model
+truncate_lower=as.numeric(args[17])
+truncate_upper=as.numeric(args[18])
 
 # by default the density ratio method is bayes
 
@@ -63,7 +65,10 @@ output <- ADMGtmle(a=eval(parse(text=a)),data=data, vertices=eval(parse(text = v
                            treatment=treatment, outcome=outcome,
                            multivariate.variables = eval(parse(text = multivariate.variables)),
                    ratio.method.L=ratio.method.L,
-                   ratio.method.M=ratio.method.M)
+                   ratio.method.M=ratio.method.M,
+                   linkA = linkA,
+                   truncate_lower = truncate_lower,
+                   truncate_upper = truncate_upper)
 
 print("Estimation done")
 

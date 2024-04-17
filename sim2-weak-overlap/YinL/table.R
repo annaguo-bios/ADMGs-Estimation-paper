@@ -19,7 +19,7 @@ objs <- c("ci_coverage_ATE","avg.MSE_ate","bias_matrix_ate","ci_matrix_ate_lower
 load("Onestep-dnorm/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.onestep.dnorm_", obj)
+  new_name <- paste0("onestep.dnorm_", obj)
   assign(new_name, get(obj))
 }
 
@@ -27,7 +27,7 @@ for (obj in objs) {
 load("TMLE-dnorm/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.dnorm_", obj)
+  new_name <- paste0("dnorm_", obj)
   assign(new_name, get(obj))
 }
 
@@ -35,7 +35,7 @@ for (obj in objs) {
 load("Onestep-densratio/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.onestep.densratio_", obj)
+  new_name <- paste0("onestep.densratio_", obj)
   assign(new_name, get(obj))
 }
 
@@ -43,7 +43,7 @@ for (obj in objs) {
 load("TMLE-densratio/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.densratio_", obj)
+  new_name <- paste0("densratio_", obj)
   assign(new_name, get(obj))
 }
 
@@ -51,7 +51,7 @@ for (obj in objs) {
 load("Onestep-bayes/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.onestep.bayes_", obj)
+  new_name <- paste0("onestep.bayes_", obj)
   assign(new_name, get(obj))
 }
 
@@ -59,35 +59,36 @@ for (obj in objs) {
 load("TMLE-bayes/result.Rdata")
 
 for (obj in objs) {
-  new_name <- paste0("continuous.bayes_", obj)
+  new_name <- paste0("bayes_", obj)
   assign(new_name, get(obj))
 }
 
 
-continuous.dnorm.ate <- cbind(colMeans(continuous.dnorm_bias_matrix_ate[,n.ind]),apply(continuous.dnorm_bias_matrix_ate[,n.ind],2,sd),continuous.dnorm_avg.MSE_ate[n.ind,2]/n,continuous.dnorm_ci_coverage_ATE[n.ind,2],colMeans((continuous.dnorm_ci_matrix_ate_upper-continuous.dnorm_ci_matrix_ate_lower)[,n.ind]))
+dnorm.ate <- cbind(colMeans(dnorm_bias_matrix_ate[,n.ind]),apply(dnorm_bias_matrix_ate[,n.ind],2,sd),dnorm_avg.MSE_ate[n.ind,2]/n,dnorm_ci_coverage_ATE[n.ind,2],colMeans((dnorm_ci_matrix_ate_upper-dnorm_ci_matrix_ate_lower)[,n.ind]))
 
 
 # continuous est2
-continuous.densratio.ate <- cbind(colMeans(continuous.densratio_bias_matrix_ate[,n.ind]),apply(continuous.densratio_bias_matrix_ate[,n.ind],2,sd),continuous.densratio_avg.MSE_ate[n.ind,2]/n,continuous.densratio_ci_coverage_ATE[n.ind,2],colMeans((continuous.densratio_ci_matrix_ate_upper-continuous.densratio_ci_matrix_ate_lower)[,n.ind]))
+densratio.ate <- cbind(colMeans(densratio_bias_matrix_ate[,n.ind]),apply(densratio_bias_matrix_ate[,n.ind],2,sd),densratio_avg.MSE_ate[n.ind,2]/n,densratio_ci_coverage_ATE[n.ind,2],colMeans((densratio_ci_matrix_ate_upper-densratio_ci_matrix_ate_lower)[,n.ind]))
 
 
 # continuous est3
-continuous.bayes.ate <- cbind(colMeans(continuous.bayes_bias_matrix_ate[,n.ind]),apply(continuous.bayes_bias_matrix_ate[,n.ind],2,sd),continuous.bayes_avg.MSE_ate[n.ind,2]/n,continuous.bayes_ci_coverage_ATE[n.ind,2],colMeans((continuous.bayes_ci_matrix_ate_upper-continuous.bayes_ci_matrix_ate_lower)[,n.ind]))
+bayes.ate <- cbind(colMeans(bayes_bias_matrix_ate[,n.ind]),apply(bayes_bias_matrix_ate[,n.ind],2,sd),bayes_avg.MSE_ate[n.ind,2]/n,bayes_ci_coverage_ATE[n.ind,2],colMeans((bayes_ci_matrix_ate_upper-bayes_ci_matrix_ate_lower)[,n.ind]))
 
 
 # continuous Onestep-dnorm
-continuous.onestep.dnorm.ate <- cbind(colMeans(continuous.onestep.dnorm_bias_matrix_ate[,n.ind]),apply(continuous.onestep.dnorm_bias_matrix_ate[,n.ind],2,sd),continuous.onestep.dnorm_avg.MSE_ate[n.ind,2]/n,continuous.onestep.dnorm_ci_coverage_ATE[n.ind,2],colMeans((continuous.onestep.dnorm_ci_matrix_ate_upper-continuous.onestep.dnorm_ci_matrix_ate_lower)[,n.ind]))
+onestep.dnorm.ate <- cbind(colMeans(onestep.dnorm_bias_matrix_ate[,n.ind]),apply(onestep.dnorm_bias_matrix_ate[,n.ind],2,sd),onestep.dnorm_avg.MSE_ate[n.ind,2]/n,onestep.dnorm_ci_coverage_ATE[n.ind,2],colMeans((onestep.dnorm_ci_matrix_ate_upper-onestep.dnorm_ci_matrix_ate_lower)[,n.ind]))
 
 # continuous onestep-den
-continuous.onestep.densratio.ate <- cbind(colMeans(continuous.onestep.densratio_bias_matrix_ate[,n.ind]),apply(continuous.onestep.densratio_bias_matrix_ate[,n.ind],2,sd),continuous.onestep.densratio_avg.MSE_ate[n.ind,2]/n,continuous.onestep.densratio_ci_coverage_ATE[n.ind,2],colMeans((continuous.onestep.densratio_ci_matrix_ate_upper-continuous.onestep.densratio_ci_matrix_ate_lower)[,n.ind]))
+onestep.densratio.ate <- cbind(colMeans(onestep.densratio_bias_matrix_ate[,n.ind]),apply(onestep.densratio_bias_matrix_ate[,n.ind],2,sd),onestep.densratio_avg.MSE_ate[n.ind,2]/n,onestep.densratio_ci_coverage_ATE[n.ind,2],colMeans((onestep.densratio_ci_matrix_ate_upper-onestep.densratio_ci_matrix_ate_lower)[,n.ind]))
 
 # continuous onestep-bayes
-continuous.onestep.bayes.ate <- cbind(colMeans(continuous.onestep.bayes_bias_matrix_ate[,n.ind]),apply(continuous.onestep.bayes_bias_matrix_ate[,n.ind],2,sd),continuous.onestep.bayes_avg.MSE_ate[n.ind,2]/n,continuous.onestep.bayes_ci_coverage_ATE[n.ind,2],colMeans((continuous.onestep.bayes_ci_matrix_ate_upper-continuous.onestep.bayes_ci_matrix_ate_lower)[,n.ind]))
+onestep.bayes.ate <- cbind(colMeans(onestep.bayes_bias_matrix_ate[,n.ind]),apply(onestep.bayes_bias_matrix_ate[,n.ind],2,sd),onestep.bayes_avg.MSE_ate[n.ind,2]/n,onestep.bayes_ci_coverage_ATE[n.ind,2],colMeans((onestep.bayes_ci_matrix_ate_upper-onestep.bayes_ci_matrix_ate_lower)[,n.ind]))
 
 
 
-positivity.dat <- list(continuous.onestep.dnorm.ate,continuous.dnorm.ate,continuous.onestep.densratio.ate,continuous.densratio.ate,
-                       continuous.onestep.bayes.ate,continuous.bayes.ate)
+positivity.dat <- list(onestep.dnorm.ate,dnorm.ate,
+                       onestep.densratio.ate,densratio.ate,
+                       onestep.bayes.ate,bayes.ate)
 
 for (i in seq_along(n)) {
   
@@ -126,7 +127,7 @@ table1 <- as_hux(dat) %>%
   set_tb_padding(1, everywhere, 0) %>% 
   set_bold(1, everywhere) %>%
   set_bold(c(2,8,14), everywhere) %>%
-  set_italic(2,everywhere) %>%
+  # set_italic(2,everywhere) %>%
   set_bottom_border(row = 1, col =2:ncol(.)) %>% 
   # set_bottom_border(row = 2, col =2:ncol(.)) %>% 
   set_right_border(2:nrow(.), 3, brdr(0.4,"dotted")) %>%
@@ -138,4 +139,4 @@ table1 <- as_hux(dat) %>%
 
 table1
 quick_latex(table1, file = "table-in.tex")
-y
+

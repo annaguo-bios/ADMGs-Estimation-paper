@@ -17,13 +17,16 @@ outcome = "Y" # name of the outcome variable
 multivariate.variables = "'list(M = c(\"M.1\", \"M.2\"))'"  # name of the multivariate variables
 ratio.method.L="bayes" # method for estimating the density ratio associated with M
 ratio.method.M="bayes" # method for estimating the density ratio associated with L
+linkA="identity"
+truncate_lower="0.001"
+truncate_upper="0.999"
 
 for (i in seq_along(n.vec)){
   joblist <- c()
   for (t in 1:nsim){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
-                  multivariate.variables," ",ratio.method.L," ",ratio.method.M)
+                  multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",linkA," ",truncate_lower," ",truncate_upper)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("bayes_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)
@@ -40,7 +43,7 @@ for (i in seq_along(n.vec)){
   for (t in 1:nsim){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
-                  multivariate.variables," ",ratio.method.L," ",ratio.method.M)
+                  multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",linkA," ",truncate_lower," ",truncate_upper)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("dnorm_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)
@@ -57,7 +60,7 @@ for (i in seq_along(n.vec)){
   for (t in 1:nsim){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
-                  multivariate.variables," ",ratio.method.L," ",ratio.method.M)
+                  multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",linkA," ",truncate_lower," ",truncate_upper)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("densratio_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)
