@@ -34,7 +34,7 @@ library(SuperLearner)
 library(densratio)
 library(MASS)
 library(mvtnorm)
-library(ADMGtmle)
+library(flexCausal)
 library(utils)
 
 # superlearner.seq = F; # whether run superlearner for sequential regression
