@@ -70,10 +70,10 @@ attach(data, warn.conflicts=FALSE)
 
 # run TMLE
 output <- ADMGtmle(a=eval(parse(text=a)),data=data, vertices=eval(parse(text = vertices)),
-                           bi_edges=eval(parse(text = bi_edges)),
-                           di_edges=eval(parse(text = di_edges)),
-                           treatment=treatment, outcome=outcome,
-                           multivariate.variables = eval(parse(text = multivariate.variables)),
+                   bi_edges=eval(parse(text = bi_edges)),
+                   di_edges=eval(parse(text = di_edges)),
+                   treatment=treatment, outcome=outcome,
+                   multivariate.variables = eval(parse(text = multivariate.variables)),
                    ratio.method.L=ratio.method.L,
                    ratio.method.M=ratio.method.M,
                    lib.seq=eval(parse(text=lib.seq)),

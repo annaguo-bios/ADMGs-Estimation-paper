@@ -7,19 +7,22 @@ library(stats)
 library(xtable)
 library(gridExtra)
 library(cowplot)
+library(here)
+
+setwd(here::here("sim4-crossfitting-HD/YnotL/dense_forest/CF/"))
 
 # plot function
 source("plot-sub.R")
 
 # sample size
-n.vec <- c(250,500,1000,2000,4000,8000)
+n.vec <- c(500,1000,2000)
 
 # number of simulation
 nsim <- 1000
 
 ### binary case ====
 # the truth
-load("../DGPs/YinL-truth.Rdata")
+load("../../../DGPs/YnotL-truth.Rdata")
 
 ## bayes-tmle====
 load("TMLE-bayes/result.Rdata")

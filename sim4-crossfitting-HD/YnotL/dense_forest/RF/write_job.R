@@ -30,6 +30,8 @@ superlearner.Y = "T" # whether to use superlearner for Y
 superlearner.A = "T" # whether to use superlearner for A
 crossfit = "F" # number of folds for crossfit
 zerodiv.avoid="0"
+dnorm.formula.L = "'list(L = \"L ~ M.1 + M.2 + X.1 + X.2 + X.3 + X.4 + X.5 + X.6 + X.7 + X.8 + X.9 + X.10 + I(X.5^2) + I(X.6^2) + I(X.7^2) + I(X.8^2) + I(X.9^2) + I(X.10^2) + A + I(A*X.1)\" )'" # formula for L
+dnorm.formula.M = "'list(M.1 = \"M.1 ~ A + X.1 + X.2 + X.3 + X.4 + X.5 + X.6 + X.7 + X.8 + X.9 + X.10 + I(A*X.1) + I(A*X.2) + I(A*X.3) + I(A*X.4) + I(A*X.5)+ I(X.5^2) + I(X.6^2) + I(X.7^2) + I(X.8^2) + I(X.9^2) + I(X.10^2)\", M.2 = \"M.2 ~ A + X.1 + X.2 + X.3 + X.4 + X.5 + X.6 + X.7 + X.8 + X.9 + X.10 + I(A*X.1) + I(A*X.2) + I(A*X.3) + I(A*X.4) + I(A*X.5)+ I(X.5^2) + I(X.6^2) + I(X.7^2) + I(X.8^2) + I(X.9^2) + I(X.10^2)\")'" # formula for M
 
 
 for (i in seq_along(n.vec)){
@@ -38,7 +40,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid," ",dnorm.formula.L," ", dnorm.formula.M)
     
     joblist <- c(joblist,job)
   }
@@ -57,7 +59,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid," ",dnorm.formula.L," ", dnorm.formula.M)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("dnorm_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)
@@ -75,7 +77,7 @@ for (i in seq_along(n.vec)){
     job <- paste0("Rscript main.R ",n.vec[i]," ",t," ", dgp.f.name," ",truth," ",out.path.tmle," ", out.path.onestep," ",a," ",
                   vertices," ",di_edges," ",bi_edges," ",treatment," ",outcome," ",
                   multivariate.variables," ",ratio.method.L," ",ratio.method.M," ",lib.seq," ",lib.L," ",lib.M," ",lib.Y," ",lib.A," ",
-                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit)
+                  superlearner.seq," ",superlearner.L," ",superlearner.M," ",superlearner.Y," ",superlearner.A," ",crossfit," ", zerodiv.avoid," ",dnorm.formula.L," ", dnorm.formula.M)
     joblist <- c(joblist,job)
   }
   write.table(joblist, file = paste0("densratio_joblist_n",i,".txt") ,quote = F, col.names = F, row.names = F)

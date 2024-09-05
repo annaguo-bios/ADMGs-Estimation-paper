@@ -26,7 +26,13 @@ superlearner.Y = as.logical(args[24]) # whether to use superlearner for Y
 superlearner.A = as.logical(args[25]) # whether to use superlearner for A
 crossfit = as.logical(args[26]) # number of folds for crossfit
 zerodiv.avoid=as.numeric(args[27]) # sample size for the simulation
+dnorm.formula.L = args[28] # formula for the density ratio associated with L
+dnorm.formula.M = args[29] # formula for the density ratio associated with M
 
+
+SL.ranger.1k <- function(...,num.trees = 1000){
+  SL.ranger(...,num.trees=num.trees)
+}
 
 # by default the density ratio method is bayes
 
@@ -81,6 +87,8 @@ output <- ADMGtmle(a = eval(parse(text = a)), data = data, vertices = eval(parse
                    multivariate.variables = eval(parse(text = multivariate.variables)),
                    ratio.method.L = ratio.method.L,
                    ratio.method.M = ratio.method.M,
+                   dnorm.formula.L = eval(parse(text=dnorm.formula.L)),
+                   dnorm.formula.M = eval(parse(text=dnorm.formula.M)),
                    lib.seq = eval(parse(text = lib.seq)),
                    lib.L = eval(parse(text = lib.L)),
                    lib.M = eval(parse(text = lib.M)),

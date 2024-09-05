@@ -2,7 +2,7 @@ ssh_options="-o StrictHostKeyChecking=no"
 
 simnumber_input="3-misspecification"
 
-for in_input in "YinL"; do
+for in_input in "YnotL"; do
     for model_input in "CF" "Linear" "SL"; do
         for e_method_input in "TMLE" "Onestep"; do
             for d_method_input in "densratio" "bayes" "dnorm"; do

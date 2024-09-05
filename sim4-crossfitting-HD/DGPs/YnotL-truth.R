@@ -8,20 +8,28 @@ density.a.x <- function(parA,a,x){
 }
 
 # true p(M|A,X)
+# M <- cbind(parM[1,1] + parM[1,2]*A + rowSums(sweep(X, 2, parM[1,3:12], "*")) + A*rowSums(sweep(X[,1:5],2,parM[1,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[1,18:22],"*")),
+#            parM[2,1] + parM[2,2]*A + rowSums(sweep(X, 2, parM[2,3:12], "*")) + A*rowSums(sweep(X[,1:5],2,parM[2,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[2,18:22],"*")))+ mvrnorm(n , mu =c(0,0) , Sigma = sd.M) # p(M|A,X)
 density.m.ax <- function(parM, m, a, x, sd.M) {
   dmvnorm(m, mean = c(parM[1, 1] + parM[1, 2] * a + rowSums(sweep(x, 2, parM[1,3:12], "*")) + a*rowSums(sweep(x[,1:5, drop=F],2,parM[1,13:17],"*")) + rowSums(sweep(x[,6:10, drop=F]^2,2,parM[1,18:22],"*")),
                       parM[2, 1] + parM[2, 2] * a + rowSums(sweep(x, 2, parM[2,3:12], "*")) + a*rowSums(sweep(x[,1:5, drop=F],2,parM[2,13:17],"*")) + rowSums(sweep(x[,6:10, drop=F]^2,2,parM[2,18:22],"*"))), sigma = sd.M)
 }
 
+
 # true p(L|M,A,X)
+# L <- parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + rowSums(sweep(X, 2, parL[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parL[14:18],"*")) + parL[19]*U1 + rnorm(n,0,sd.L) # p(L|M,X,U1)
+# U1 <- parU1[1] + parU1[2]*A + parU1[3]*X[,1] + parU1[4]*A*X[,1] + rnorm(n,0,sd.U1) # p(U1|A,X)
 density.l.max <- function(parL, parU1, l, m, a, x, sd.L, sd.U1) {
-  dnorm(l, mean = parL[1] + parL[2]*m[1] + parL[3]*m[2] + rowSums(sweep(x, 2, parL[4:13], "*"))  + rowSums(sweep(x[,6:10, drop=F]^2,2,parL[14:18],"*")) + parL[19]*{parU1[1] + parU1[2]*a + parU1[3]*x[,1] + parU1[4]*a*x[,1]}, sqrt(sd.L^2+sd.U1^2))
+  dnorm(l, mean = parL[1] + parL[2]*{parU1[1] + parU1[2]*a + parU1[3]*x[,1] + parU1[4]*a*x[,1]} + parL[3]*m[1] + parL[4]*m[2] + rowSums(sweep(x, 2, parL[5:14], "*"))  + rowSums(sweep(x[,6:10, drop=F]^2,2,parL[15:19],"*")) , sqrt(sd.L^2+(parL[2]*sd.U1)^2))
 }
 
 
 # E(Y|L,M,A,X)
+# Y <- parY[1] + parY[2]*L  + parY[3]*A + rowSums(sweep(X, 2, parY[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parY[14:18],"*")) + parY[19]*U2  + rnorm(n, 0, sd.Y) # p(Y|L,A,X,U2)
+# U2 <- parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*A + parU2[5]*X[,1] + rnorm(n,0,sd.U2) # p(U2|A,X,M)
 E.y.lmax <- function(parY,parU2,l,m,a,x){ # takes m as a dataframe or matrix
-  parY[1] + parY[2]*l  + parY[3]*a + rowSums(sweep(x, 2, parY[4:13], "*"))  + rowSums(sweep(x[,6:10, drop=F]^2,2,parY[14:18],"*")) + parY[19]*{parU2[1] + parU2[2]*m[,1] + parU2[3]*m[,2] + parU2[4]*a + parU2[5]*x[,1]}
+  parY[1] + parY[2]*l  + parY[3]*a + parY[4]*{parU2[1] + parU2[2]*m[,1] + parU2[3]*m[,2] + parU2[4]*a + parU2[5]*x[,1]} + rowSums(sweep(x, 2, parY[5:14], "*"))  + rowSums(sweep(x[,6:10, drop=F]^2,2,parY[15:19],"*")) 
+
 }
 
 
@@ -46,22 +54,31 @@ compute_psi_and_var <- function(a, parA, parU1, parU2, parM, parL, parY, sd.L, s
   p.L.Ma1X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a1, X[i,, drop=F], sd.L, sd.U1)}) # p(L|a,X)
   p.L.Ma0X <- sapply(1:n, function(i) {density.l.max(parL, parU1, L[i], c(M.1[i], M.2[i]), a0, X[i,, drop=F], sd.L, sd.U1)}) # p(L|A,X)
   
-  # outcome regression E[Y|M,A,X]
+  # # outcome regression E[Y|M,A,X]
   muY.a1 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a1, x = X)
   muY.a0 <- E.y.lmax(parY, parU2, l = L, m = cbind(M.1, M.2), a = a0, x = X)
   
   # int E(Y|L,M,A,X)p(L|M,A,X) dL
-  mu.L.a1 <- parY[1] + parY[2]*{parL[1] + parL[2]*M[,1] + parL[3]*M[,2] + rowSums(sweep(X, 2, parL[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parL[14:18],"*")) + parL[19]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
-    parY[3]*a0 + rowSums(sweep(X, 2, parY[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parY[14:18],"*")) + parY[19]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X[,1]} # outcome regression evaluated at a0
+  mu.L.a1 <- parY[1] + 
+    parY[2]*{parL[1] + parL[3]*M[,1] + parL[4]*M[,2] + rowSums(sweep(X, 2, parL[5:14], "*"))  + rowSums(sweep(X[,6:10]^2,2,parL[15:19],"*")) + parL[2]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
+    parY[3]*a0 + rowSums(sweep(X, 2, parY[5:14], "*"))  + rowSums(sweep(X[,6:10]^2,2,parY[15:19],"*")) + 
+    parY[4]*{parU2[1] + parU2[2]*M[,1] + parU2[3]*M[,2] + parU2[4]*a0 + parU2[5]*X[,1]} # outcome regression evaluated at a0
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X) dL dM
-  mu.M.a0 <- parY[1] + parY[2]*{parL[1] + parL[2]*{parM[1,1] + parM[1,2]*a0 + rowSums(sweep(X, 2, parM[1,3:12], "*")) + rep(a0,n)*rowSums(sweep(X[,1:5],2,parM[1,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[1,18:22],"*"))} + # replace M1 with M1|a0,X 
-      parL[3]*{parM[2,1] + parM[2,2]*a0 + rowSums(sweep(X, 2, parM[2,3:12], "*")) + rep(a0,n)*rowSums(sweep(X[,1:5],2,parM[2,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[2,18:22],"*"))} + # replace M2 with M2|a0,X
-      rowSums(sweep(X, 2, parL[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parL[14:18],"*")) + parL[19]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
-    parY[3]*a0 + rowSums(sweep(X, 2, parY[4:13], "*"))  + rowSums(sweep(X[,6:10]^2,2,parY[14:18],"*")) + parY[19]*{parU2[1] + 
-        parU2[2]*{parM[1,1] + parM[1,2]*a0 + rowSums(sweep(X, 2, parM[1,3:12], "*")) + rep(a0,n)*rowSums(sweep(X[,1:5],2,parM[1,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[1,18:22],"*"))} + # replace M1 with M1|a0,X 
-        parU2[3]*{parM[2,1] + parM[2,2]*a0 + rowSums(sweep(X, 2, parM[2,3:12], "*")) + rep(a0,n)*rowSums(sweep(X[,1:5],2,parM[2,13:17],"*")) + rowSums(sweep(X[,6:10]^2,2,parM[2,18:22],"*"))} + # replace M2 with M2|a0,X
+  E.M1.a0X <- parM[1, 1] + parM[1, 2] * a0 + rowSums(sweep(X, 2, parM[1,3:12], "*")) + a0 * rowSums(sweep(X[,1:5, drop=F],2,parM[1,13:17],"*")) + rowSums(sweep(X[,6:10, drop=F]^2,2,parM[1,18:22],"*"))
+  E.M2.a0X <- parM[2, 1] + parM[2, 2] * a0 + rowSums(sweep(X, 2, parM[2,3:12], "*")) + a0 * rowSums(sweep(X[,1:5, drop=F],2,parM[2,13:17],"*")) + rowSums(sweep(X[,6:10, drop=F]^2,2,parM[2,18:22],"*"))
+  
+  mu.M.a0 <- parY[1] + 
+    parY[2]*{parL[1] + 
+        parL[3]*E.M1.a0X + # replace M1 with M1|a0,X 
+        parL[4]*E.M2.a0X + # replace M2 with M2|a0,X 
+        rowSums(sweep(X, 2, parL[5:14], "*"))  + rowSums(sweep(X[,6:10]^2,2,parL[15:19],"*")) + parL[2]*{parU1[1] + parU1[2]*a1 + parU1[3]*X[,1] + parU1[4]*a1*X[,1]}}  + # replace L with L|M,a1,X
+    parY[3]*a0 + rowSums(sweep(X, 2, parY[5:14], "*"))  + rowSums(sweep(X[,6:10]^2,2,parY[15:19],"*")) + 
+    parY[4]*{parU2[1] + 
+        parU2[2]*E.M1.a0X + # replace M1 with M1|a0,X 
+        parU2[3]*E.M2.a0X + # replace M2 with M2|a0,X 
         parU2[4]*a0 + parU2[5]*X[,1]} # outcome regression evaluated at a0
+  
   
   # int E(Y|L,M,A,X)p(L|M,A,X)p(M|A,X)p(A|X) dL dM dA
   mu.A.a1 <- p.a1.X * mu.M.a0
@@ -124,6 +141,5 @@ compute_truth <- function(n){
               ATE=ATE, 
               VAR.ATE=VAR.ATE))
 }
-
 
 
