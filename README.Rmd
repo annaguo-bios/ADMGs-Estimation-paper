@@ -11,10 +11,13 @@ This repository contains code for implementing the simulation studies discussed 
 ![](simulation-ADMGs.png)
 
 ## Introduction to the folders
-- `sim1-consistency`: This folder contains code for the simulation 1, which is about validating the statistical properties, such as consistency and asymptotic linearity, of the estimators.
+- `sim1-consistency`: This folder contains code for the simulation 1 and 5, which is about validating the statistical properties, such as consistency and asymptotic linearity, of the estimators.
 - `sim2-weak-overlap`: This folder contains code for the simulation 2, which is about understanding the behaviors of the estimators under weak overlap.
 - `sim3-misspecification`: This folder contains code for the simulation 3, which is about understanding the behaviors of the estimators under model misspecification.
 - `sim4-crossfitting-HD`: This folder contains code for the simulation 4, which is about understanding the behaviors of the estimators when applied with cross-fitting.
+- `sim5-semieffi`: This folder contains code for the simulation 6, which is about understanding the behaviors of the estimators under regular independence constraint.
+- `sim6-boundness`: This folder contains code for the simulation 7, which compares the one-step estimator and TMLE in retaining estimates bound.
+- `sim7-rate`: This folder contains code for the simulation 8, which investigates asymptotic linearity of both estimators when nuisance convergence error is of orders other than $o_p(n^{-1/4})$.
 
 Under each of these folders, there are three subfolders, namely `DGPs`, `YinL`, and `YnotL`.
 
