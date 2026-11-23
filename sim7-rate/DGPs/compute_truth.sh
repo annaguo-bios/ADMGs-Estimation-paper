@@ -1,0 +1,1 @@
+Rscript compute_truth.R YinL-truth.R YinL-dgp.R YinL-truth.Rdata 100000
